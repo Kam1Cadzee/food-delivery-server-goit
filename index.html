@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <form name="registerForm">
+    <label>Имя</label></br>
+    <input type="text" name="username" /></br></br>
+    <label>Возраст</label></br>
+    <input type="number" name="telephone" /></br></br>
+    <label>Имя</label></br>
+    <input type="text" name="password" /></br></br>
+    <label>Имя</label></br>
+    <input type="text" name="email" /></br></br>
+    <button type="submit" id="submit">Отправить</button>
+</form>
+  <script>
+ 
+    document.getElementById("submit").addEventListener("click", function (e) {
+         e.preventDefault();
+        // получаем данные формы
+        let registerForm = document.forms["registerForm"];
+        let username = registerForm.elements["username"].value;
+        let telephone = registerForm.elements["telephone"].value;
+        let password = registerForm.elements["password"].value;
+        let email = registerForm.elements["email"].value;
+        // сериализуем данные в json
+        let user = JSON.stringify({username: username, telephone: telephone, password: password, email: email});
+        let request = new XMLHttpRequest();
+        // посылаем запрос на адрес "/user"
+         request.open("POST", "/signup", true);   
+         request.setRequestHeader("Content-Type", "application/json");
+         request.addEventListener("load", function () {
+
+             console.log(request.response);   // смотрим ответ сервера
+         });
+         request.send(user);
+     });
+</script>
+</body>
+</html>
