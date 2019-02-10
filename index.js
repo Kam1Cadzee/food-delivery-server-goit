@@ -1,15 +1,19 @@
 const startServer = require('./src/server')
-
 startServer(3000);
 
 
 /*const express = require("express");
 const fs = require("fs");
+
+const express = require('express');
+const fs = require('fs');
+
 const app = express();
 
 const jsonParser = express.json();
 
 const productRouter = express.Router();
+
 productRouter.use("/", function(request, response) {
   response.writeHead(200, { "Content-Type": "application/json" });
   fs.createReadStream("src/db/products/products-mock.json").pipe(response);
@@ -35,5 +39,3 @@ app.use("/", function(request, response) {
 });
 app.listen(3000); */
 
-
-//http://localhost:3000/signup?username=qweqwe&telephone=123213&password=password&email=email
